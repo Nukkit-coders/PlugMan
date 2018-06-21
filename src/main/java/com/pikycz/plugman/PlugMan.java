@@ -35,9 +35,9 @@ public class PlugMan extends PluginBase {
             }
 
             if (args.length == 0) {
-                sender.sendMessage(TextFormat.GOLD + "-- " + PluginPrefix + " --");
-                sender.sendMessage(TextFormat.GREEN + "/plugman enable <plugin>" + TextFormat.YELLOW + "- Enable Plugin");
-                sender.sendMessage(TextFormat.GREEN + "/plugman disable <plugin>" + TextFormat.YELLOW + "- Disable Plugin");
+                sender.sendMessage(TextFormat.WHITE + "-- " + PluginPrefix + TextFormat.WHITE + " --");
+                sender.sendMessage(TextFormat.GREEN + "/plugman enable <plugin>" + TextFormat.YELLOW + " - Enable Plugin");
+                sender.sendMessage(TextFormat.GREEN + "/plugman disable <plugin>" + TextFormat.YELLOW + " - Disable Plugin");
             } else {
                 switch (args[0]) {
 
@@ -46,52 +46,52 @@ public class PlugMan extends PluginBase {
                         if (args[1].equalsIgnoreCase("all") || args[1].equalsIgnoreCase("*")) {
                             if (sender.hasPermission("plugman.all")) {
                                 PluginUtil.enableAll();
-                                sender.sendMessage("§9All plugins have been enabled");
+                                sender.sendMessage(PluginPrefix + " §9All plugins have been enabled");
                             } else {
-                                sender.sendMessage("§cYou do not have permission to do this.");
+                                sender.sendMessage(PluginPrefix + " §cYou do not have permission to do this.");
                             }
                             return false;
                         }
 
                         if (target == null) {
-                            sender.sendMessage("§cThat is not a valid plugin.");
+                            sender.sendMessage(PluginPrefix + " §cThat is not a valid plugin.");
                             return true;
                         }
 
                         if (target.isEnabled()) {
-                            sender.sendMessage("§c" + target + " is already enabled.");
+                            sender.sendMessage(PluginPrefix + " §c" + target + " is already enabled.");
                             return true;
                         }
 
                         PluginUtil.enable(target);
 
-                        sender.sendMessage("§9 " + target + "has been enabled.");
+                        sender.sendMessage(PluginPrefix + " §9 " + target + " has been enabled.");
                         break;
                     case "disable":
                         Plugin target1 = PluginUtil.getPluginByName(args, 1);
                         if (args[1].equalsIgnoreCase("all") || args[1].equalsIgnoreCase("*")) {
                             if (sender.hasPermission("plugman.all")) {
                                 PluginUtil.disableAll();
-                                sender.sendMessage("§9All plugins have been disabled.");
+                                sender.sendMessage(PluginPrefix + " §9All plugins have been disabled.");
                             } else {
-                                sender.sendMessage("§cYou do not have permission to do this.");
+                                sender.sendMessage(PluginPrefix + " §cYou do not have permission to do this.");
                             }
                             return false;
                         }
 
                         if (target1 == null) {
-                            sender.sendMessage("§cThat is not a valid plugin.");
+                            sender.sendMessage(PluginPrefix + " §cThat is not a valid plugin.");
                             return true;
                         }
 
                         if (!target1.isEnabled()) {
-                            sender.sendMessage("§c" + target1 + "is already disabled.");
+                            sender.sendMessage(PluginPrefix + " §c" + target1 + " is already disabled.");
                             return true;
                         }
 
                         PluginUtil.disable(target1);
 
-                        sender.sendMessage("§9" + target1 + "has been disabled.");
+                        sender.sendMessage(PluginPrefix + " §9" + target1 + " has been disabled.");
                         break;
                     default:
                         sender.sendMessage(PluginPrefix + " Unknow command.");
