@@ -1,0 +1,24 @@
+name: PlugMan
+main: com.pikycz.plugman.PlugMan
+version: "1.0"
+api: ["1.0.5"]
+author: PikyCZ
+
+load: STARTUP
+author: PikyCZ
+website: https://github.com/Nukkit-coders/PlugMan
+
+commands:
+  plugman:
+    description: Main Plugman Command
+    aliases: ["plugman"]
+    usage: /plugman
+    permission: plugman.main  
+    
+permissions:
+  plugman.main:
+    description: ""
+    default: op
+  plugman.all:
+    description: ""
+    default: op
